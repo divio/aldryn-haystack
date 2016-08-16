@@ -46,13 +46,18 @@ error if the connection does not work.
 Usage with aldryn-search
 ========================
 
+The full instructions are available
+_here:https://github.com/aldryn/aldryn-search , but are not necessary as all
+steps are discribed below.
+
 * Add ``aldryn-search`` to ``requirements.in``
-* Add ``aldryn_search`` to ``INSTALLED_APPS`` in ``settings.py``
+* Add ``aldryn_search``, ``standard_form`` and ``spurl`` to ``INSTALLED_APPS``
+  in ``settings.py``
 * in ``settings.py`` add the following code to configure an index per language:
 
 ::
     from aldryn_haystack import haystack_url
-    HAYSTACK_CONNECTIONS = haystack_url.parse_multi(
+    HAYSTACK_CONNECTIONS = haystack_url.parse_i18n(
         url=DEFAULT_HAYSTACK_URL,
         language_codes=[lang[0] for lang in LANGUAGES],
         default_language_code=LANGUAGE_CODE,
@@ -71,9 +76,12 @@ Deactivate the respective indexes with the following settings:
     ALDRYN_PEOPLE_SEARCH = False
 
 
-====================
-Manual configuration
-====================
+===========
+Other Stuff
+===========
+
+``DEFAULT_HAYSTACK_URL`` environment variable
+=============================================
 
 Set an environment variable (currently only ElasticSearch is supported)::
 
@@ -87,3 +95,8 @@ There is also support to define the index name with a wildcard ``*`` that can
 be used for things like easy multilingual index setup.
 
 
+Debugging
+=========
+
+Set the ``ALDRYN_HAYSTACK_DEBUG`` environment variable to True to get detailed
+logs from haystack.
