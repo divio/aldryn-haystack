@@ -42,6 +42,14 @@ Test the connection::
 There won't be any results yet, since nothing was indexed. But you will get an
 error if the connection does not work.
 
+Indexing on aldryn
+==================
+
+To index pages setup a cronjob::
+
+    python manage.py rebuild_index --noinput
+
+
 ========================
 Usage with aldryn-search
 ========================
