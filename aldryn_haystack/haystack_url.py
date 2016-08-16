@@ -81,14 +81,14 @@ def parse(url, suffix='default'):
     return connection
 
 
-def parse_multi(
+def parse_i18n(
         url,
         language_codes,
-        default_language_code,
+        default_language_code=None,
 ):
     """
-    Takes an url containing a "*" character and replaces the "*" with the
-    language code.
+    Takes an url containing a "*" character and creates an index per language
+    replacing the "*" with the language code, except for the default language.
     :param url:
     :return:
     """
@@ -102,7 +102,7 @@ def parse_multi(
         )
     connections = {}
     for language_code in language_codes:
-        if language_code == default_language_code:
+        if default_language_code and language_code == default_language_code:
             connections['default'] = parse(url, suffix='default')
         else:
             connections[language_code] = parse(url, suffix=language_code)

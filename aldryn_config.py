@@ -11,7 +11,7 @@ class Form(forms.BaseForm):
         s = settings
         env = partial(djsenv, settings=settings)
 
-        if env('DJANGO_MODE') == 'local' or env('DJANGO_MODE') == 'build':
+        if env('DJANGO_MODE') == 'build':
             s['HAYSTACK_CONNECTIONS'] = {
                 'default': {
                     'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
