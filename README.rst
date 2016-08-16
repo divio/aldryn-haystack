@@ -64,6 +64,7 @@ steps are discribed below.
 * in ``settings.py`` add the following code to configure an index per language:
 
 ::
+
     from aldryn_haystack import haystack_url
     HAYSTACK_CONNECTIONS = haystack_url.parse_i18n(
         url=DEFAULT_HAYSTACK_URL,
@@ -79,6 +80,7 @@ At the time of writing search is broken in aldryn-jobs and aldryn-people.
 Deactivate the respective indexes with the following settings:
 
 ::
+
     # incompatible with Haystack
     # https://github.com/aldryn/aldryn-people/issues/141
     # https://github.com/aldryn/aldryn-jobs/issues/175
