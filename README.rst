@@ -64,6 +64,8 @@ steps are discribed below.
     )
     HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter']
 
+Start the webserver and create a new CMS Page called ``search``. Then attach
+the "aldryn search" App Hook and publish the page.
 
 At the time of writing search is broken in aldryn-jobs and aldryn-people.
 Deactivate the respective indexes with the following settings:
