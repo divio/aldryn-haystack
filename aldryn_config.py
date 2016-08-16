@@ -11,6 +11,8 @@ class Form(forms.BaseForm):
         s = settings
         env = partial(djsenv, settings=settings)
 
+        s['DEFAULT_HAYSTACK_URL'] = env('DEFAULT_HAYSTACK_URL')
+
         if env('DJANGO_MODE') == 'build':
             s['HAYSTACK_CONNECTIONS'] = {
                 'default': {
@@ -19,7 +21,7 @@ class Form(forms.BaseForm):
             }
             return s
 
-        if not env('DEFAULT_HAYSTACK_URL'):
+        if not s['DEFAULT_HAYSTACK_URL']:
             return s
 
         s['ALDRYN_HAYSTACK_DEBUG'] = boolean_ish(
