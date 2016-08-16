@@ -2,7 +2,7 @@
 Aldryn Haystack
 ###############
 
-An simple django haystack setup bundled as an Aldryn Addon.
+A simple django haystack setup bundled as an Aldryn Addon.
 To be used together with aldryn-django. This Addon configures a default
 index for haystack using ElasticSearch.
 
