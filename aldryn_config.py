@@ -33,6 +33,8 @@ class Form(forms.BaseForm):
             url=s['DEFAULT_HAYSTACK_URL']
         )
 
+        s['INSTALLED_APPS'].append('haystack')
+
         if s['ALDRYN_HAYSTACK_DEBUG']:
             s['LOGGING']['loggers']['elasticsearch.trace'] = {
                 'handlers': ['console'],
