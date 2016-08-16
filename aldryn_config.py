@@ -23,7 +23,7 @@ class Form(forms.BaseForm):
             return s
 
         s['ALDRYN_HAYSTACK_DEBUG'] = boolean_ish(
-            env('ALDRYN_HAYSTACK_DEBUG', s['DEBUG']))
+            env('ALDRYN_HAYSTACK_DEBUG', False))
 
         s['DEFAULT_HAYSTACK_URL'] = env('DEFAULT_HAYSTACK_URL')
         s.setdefault('HAYSTACK_CONNECTIONS', {})
