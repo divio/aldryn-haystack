@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from furl import furl
-from requests_aws4auth import AWS4Auth
 from aldryn_addons.utils import boolean_ish
 from django.utils.module_loading import import_string
 
@@ -60,7 +59,11 @@ def parse(url, suffix='default'):
         ))
         Serializer = import_string(url.query.params.get(
             'serializer',
-            'aldryn_haystack.serializers.AldrynJSONSerializer'
+            'elasticsearch.serializer.JSONSerializer'
+        ))
+        AWS4Auth = import_string(url.query.params.get(
+            'aws_auth',
+            'aldryn_haystack.auth.AWS4AuthNotUnicode'
         ))
         connection['KWARGS'] = {
             'port': url.port,
