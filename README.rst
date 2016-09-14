@@ -65,13 +65,15 @@ steps are discribed below.
 
 ::
 
-    from aldryn_haystack import haystack_url
-    HAYSTACK_CONNECTIONS = haystack_url.parse_i18n(
-        url=DEFAULT_HAYSTACK_URL,
-        language_codes=[lang[0] for lang in LANGUAGES],
-        default_language_code=LANGUAGE_CODE,
-    )
-    HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter']
+    if DEFAULT_HAYSTACK_URL and os.getenv('DJANGO_MODE') != 'build':
+        from aldryn_haystack import haystack_url
+        HAYSTACK_CONNECTIONS = haystack_url.parse_i18n(
+            url=DEFAULT_HAYSTACK_URL,
+            language_codes=[lang[0] for lang in LANGUAGES],
+            default_language_code=LANGUAGE_CODE,
+        )
+
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter']
 
 Start the webserver and create a new CMS Page called ``search``. Then attach
 the "aldryn search" App Hook and publish the page.
