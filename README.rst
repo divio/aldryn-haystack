@@ -73,7 +73,7 @@ steps are discribed below.
             default_language_code=LANGUAGE_CODE,
         )
 
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter']
+        HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter']
 
 Start the webserver and create a new CMS Page called ``search``. Then attach
 the "aldryn search" App Hook and publish the page.
