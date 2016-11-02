@@ -63,7 +63,7 @@ def parse(url, suffix='default'):
         ))
         AWS4Auth = import_string(url.query.params.get(
             'aws_auth',
-            'aldryn_haystack.auth.AWS4AuthNotUnicode'
+            'aldryn_elasticsearch.auth.AWS4AuthNotUnicode'
         ))
         connection['KWARGS'] = {
             'port': url.port,

@@ -13,8 +13,7 @@ setup(
     packages=find_packages(),
     install_requires=(
         'aldryn-django',
-        'elasticsearch',
-        'requests-aws4auth',
+        'aldryn-elasticsearch',
         'django-haystack',
         'furl',
         'django-getenv',
