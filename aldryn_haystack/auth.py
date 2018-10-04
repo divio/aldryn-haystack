@@ -20,4 +20,19 @@ class AWS4AuthNotUnicode(AWS4Auth):
             value if isinstance(value, bytes) else value.encode('ascii')
             for name, value in req.headers.items()
         }
+
+        # Some layer down the stack (probably requests or urllib3 when running
+        # under python3) does something differently based on the presence of
+        # the content-length header, but only checks against one of the text or
+        # bytes types, failing to follow the right path when the header is
+        # already encoded (everything works when the header is left as `str`).
+        #
+        # Some versions of AWS ElasticSearch service started to raise a 400
+        # HTTP error in such cases (first observed after the modification of a
+        # working 2.3 cluster, which might indicate that the change has been
+        # introduced in a patch release).
+        #
+        # The workaround is to remove the header when the content-length is 0.
+        if req.headers.get(b'Content-Length') == b'0':
+            req.headers.pop(b'Content-Length')
         return req
