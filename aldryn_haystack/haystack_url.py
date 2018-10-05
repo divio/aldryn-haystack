@@ -70,7 +70,7 @@ def parse(url, suffix='default'):
             # Just drop the workaround as we were not able to reproduce the
             # issue anymore with any combination of recent dependencies and
             # we suppose that the issue does not exist anymore on Python 3
-            # because of its explicity handling of `bytes` and `str` as
+            # because of its explicit handling of `bytes` and `str` as
             # different types.
             default_auth_class = 'requests_aws4auth.AWS4Auth'
         else:
