@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
 from furl import furl
 from aldryn_addons.utils import boolean_ish
 from django.utils.module_loading import import_string
@@ -61,9 +62,25 @@ def parse(url, suffix='default'):
             'serializer',
             'elasticsearch.serializer.JSONSerializer'
         ))
+        if sys.version_info.major >= 3:
+            # The workaround for the large payload issue below is causing
+            # the underling Python `http` module to send the Content-Length
+            # header twice when running on Python 3, which fails with a
+            # 400 Bad Request on recent AWS ElasticSearch service endpoints.
+            # Just drop the workaround as we were not able to reproduce the
+            # issue anymore with any combination of recent dependencies and
+            # we suppose that the issue does not exist anymore on Python 3
+            # because of its explicity handling of `bytes` and `str` as
+            # different types.
+            default_auth_class = 'requests_aws4auth.AWS4Auth'
+        else:
+            # The unicode handling of urllib3/pyopenssl combined with
+            # AWS4Auth causes requests with large bodies (> 2MB) to fail.
+            # For more details see the workaround referenced below.
+            default_auth_class = 'aldryn_haystack.auth.AWS4AuthNotUnicode'
         AWS4Auth = import_string(url.query.params.get(
             'aws_auth',
-            'aldryn_haystack.auth.AWS4AuthNotUnicode'
+            default_auth_class,
         ))
         connection['KWARGS'] = {
             'port': url.port,
