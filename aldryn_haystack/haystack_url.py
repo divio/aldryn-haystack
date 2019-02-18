@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 import sys
-from furl import furl
-from aldryn_addons.utils import boolean_ish
+
 from django.utils.module_loading import import_string
+
+from aldryn_addons.utils import boolean_ish
+from furl import furl
 
 
 def parse(url, suffix='default'):
