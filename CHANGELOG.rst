@@ -3,6 +3,13 @@ Changelog
 =========
 
 
+0.5.2 (unreleased)
+==================
+
+* Added isort and flake8
+* Adapted code base to align with other supported addons
+
+
 0.5.1 (2018-10-05)
 ==================
 
