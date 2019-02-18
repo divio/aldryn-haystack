@@ -1,11 +1,22 @@
-###############
+===============
 Aldryn Haystack
-###############
+===============
 
 A simple django haystack setup bundled as an Aldryn Addon.
 To be used together with aldryn-django. This Addon configures a default
 index for haystack using ElasticSearch.
 
+Contributing
+============
+
+This is a an open-source project. We'll be delighted to receive your
+feedback in the form of issues and pull requests. Before submitting your
+pull request, please review our `contribution guidelines
+<http://docs.django-cms.org/en/latest/contributing/index.html>`_.
+
+We're grateful to all contributors who have helped create and maintain this package.
+Contributors are listed at the `contributors <https://github.com/divio/aldryn-haystack/graphs/contributors>`_
+section.
 
 ============
 Installation
