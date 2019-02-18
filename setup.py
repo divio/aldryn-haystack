@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from setuptools import find_packages, setup
 
-from aldryn_sites import __version__
+from aldryn_haystack import __version__
 
 
 REQUIREMENTS = [
