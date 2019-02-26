@@ -1,11 +1,22 @@
-###############
+===============
 Aldryn Haystack
-###############
+===============
 
 A simple django haystack setup bundled as an Aldryn Addon.
 To be used together with aldryn-django. This Addon configures a default
 index for haystack using ElasticSearch.
 
+Contributing
+============
+
+This is a an open-source project. We'll be delighted to receive your
+feedback in the form of issues and pull requests. Before submitting your
+pull request, please review our `contribution guidelines
+<http://docs.django-cms.org/en/latest/contributing/index.html>`_.
+
+We're grateful to all contributors who have helped create and maintain this package.
+Contributors are listed at the `contributors <https://github.com/divio/aldryn-haystack/graphs/contributors>`_
+section.
 
 ============
 Installation
@@ -55,7 +66,7 @@ Usage with aldryn-search
 ========================
 
 The full instructions are available
-_here:https://github.com/aldryn/aldryn-search , but are not necessary as all
+_here:https://github.com/divio/aldryn-search , but are not necessary as all
 steps are discribed below.
 
 * Add ``aldryn-search`` to ``requirements.in``
@@ -84,8 +95,8 @@ Deactivate the respective indexes with the following settings:
 ::
 
     # incompatible with Haystack
-    # https://github.com/aldryn/aldryn-people/issues/141
-    # https://github.com/aldryn/aldryn-jobs/issues/175
+    # https://github.com/divio/aldryn-people/issues/141
+    # https://github.com/divio/aldryn-jobs/issues/175
     ALDRYN_JOBS_SEARCH = False
     ALDRYN_PEOPLE_SEARCH = False
 
