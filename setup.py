@@ -5,7 +5,7 @@ from aldryn_haystack import __version__
 
 
 REQUIREMENTS = [
-    'aldryn-django>=1.11.20.1',
+    'aldryn-django',
     'elasticsearch',
     'requests-aws4auth',
     'django-haystack',
